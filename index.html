@@ -14,28 +14,47 @@
 
 <body>
   <main>
-    <h1>My Agora States</h1>
-    <section class="form__container">
-      <form action="" method="get" class="form">
-        <div class="form__input--wrapper">
-          <div class="form__input--name">
-            <label for="name">Enter your name: </label>
-            <input type="text" name="name" id="name" required>
+    <div id="cyberpunky-display">
+      <h1>My Agora States</h1>
+      <p>Running Agora States v0.1</p>
+      <div>
+        <span>Loading HTML file...</span>
+        <span> Done.</span>
+      </div>
+      <p>Loading JS/CSS file... Done.</p>
+      <p>Accessing Local Storage... Done.</p>
+      <p>Rendering Page... Done. </p>
+      <section id="welcome-msg">
+        <p>=================================</p>
+        <p>|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|</p>
+        <p>|&nbsp;&nbsp;&nbsp;&nbsp;Welcome To The Agora States !&nbsp;&nbsp;&nbsp;&nbsp;|</p>
+        <p>|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|</p>
+        <p>=================================</p>
+      </section>
+      <p>agora:~$ sh ./askToAgoraStates</p>
+      <p>Please write some text for ask</p>
+      <section class="form__container">
+        <form action="" method="get" class="form">
+          <div class="form__input--wrapper">
+            <div class="form__input">
+              <label for="name">Enter your name : </label>
+              <input type="text" name="name" id="name" required autofocus>
+            </div>
+            <div class="form__input">
+              <label for="title">Enter your title : </label>
+              <input type="text" name="title" id="title" required>
+            </div>
+            <div class="form__textbox">
+              <label for="story">Explain your problem. If you have written please press a tap then enter.</label>
+              <textarea id="story" name="story" required></textarea>
+            </div>
           </div>
-          <div class="form__input--title">
-            <label for="name">Enter your title: </label>
-            <input type="text" name="name" id="name" required>
+          <div class="form__submit">
+            <input type="submit" value="submit">
           </div>
-          <div class="form__textbox">
-            <label for="story">Your question: </label>
-            <textarea id="story" name="story" placeholder="질문을 작성하세요" required></textarea>
-          </div>
-        </div>
-        <div class="form__submit">
-          <input type="submit" value="submit">
-        </div>
-      </form>
-    </section>
+        </form>
+      </section>
+    </div>
     <section class="discussion__wrapper">
       <ul class="discussions__container">
         <li class="discussion__container">

@@ -1,11 +1,34 @@
 :root {
     --discussionWrapperWidth: 540px;
-    --discussionAvatarWidth: 48px;
+    --discussionAvatarSize: 48px;
+    --cyberpunkyDisplayBackground: rgb(232,199,108);
+    --cyberpunkyDisplayText: rgb(171,121,57);
+    --cyberpunkyTextShadowLighter: rgb(217, 162, 91);
+    --cyberpunkyTextShadowDarker: rgb(195, 140, 68);
+    --cyberpunkyShadow: 0 0 7px var(--cyberpunkyTextShadowLighter),
+        0 0 10px var(--cyberpunkyTextShadowLighter),
+        0 0 21px var(--cyberpunkyTextShadowLighter),
+        0 0 42px var(--cyberpunkyTextShadowDarker),
+        0 0 82px var(--cyberpunkyTextShadowDarker),
+        0 0 92px var(--cyberpunkyTextShadowDarker),
+        0 0 102px var(--cyberpunkyTextShadowDarker),
+        0 0 151px var(--cyberpunkyTextShadowDarker);
+}
+@font-face {
+    font-family: 'NeoDunggeunmoPro-Regular';
+    src: url('NeoDunggeunmoPro-Regular.woff');
 }
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    font-family: 'NeoDunggeunmoPro-Regular';
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    background-color: var(--cyberpunkyDisplayBackground);
 }
 
 li {
@@ -18,6 +41,11 @@ li {
 
 li.discussion__container {
     display: flex;
+    justify-content: center;
+    margin: 10px 0;
+    width: calc(var(--discussionWrapperWidth) + 50px);
+    padding: 25px 0;
+    background-color: white;
 }
 
 .discussion__avatar--wrapper {
@@ -26,16 +54,17 @@ li.discussion__container {
 }
 .discussion__avatar--image {
     border-radius: 50%;
-    width: var(--discussionAvatarWidth);
+    width: var(--discussionAvatarSize);
+    height: var(--discussionAvatarSize);
 }
 
 .discussion__content {
     margin-left: 10px;
     
     /* 콘텐츠 영역의 너비는 전체 너비에서 아바타 영역을 뺀 너비의 80% */
-    width: calc((var(--discussionWrapperWidth) - var(--discussionAvatarWidth)) * 0.8);
+    width: calc((var(--discussionWrapperWidth) - var(--discussionAvatarSize)) * 0.8);
 
-    height: 60px;
+    /* height: 60px; */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -50,10 +79,57 @@ li.discussion__container {
 
 .discussion__answered {
     /* 정답여부 영역의 너비는 전체 너비에서 아바타 영역을 뺀 너비의 20% */
-    width: calc((var(--discussionWrapperWidth) - var(--discussionAvatarWidth)) * 0.2);
+    width: calc((var(--discussionWrapperWidth) - var(--discussionAvatarSize)) * 0.2);
 
     display: flex;
     justify-content: flex-end;
     align-items: center;
     font-size: 40px;
+}
+
+#cyberpunky-display {
+    color: var(--cyberpunkyDisplayText);
+    background-color: var(--cyberpunkyDisplayBackground);
+    text-shadow: var(--cyberpunkyShadow);
+    border: 1px;
+}
+#cyberpunky-display h1 {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 50px;
+}
+#cyberpunky-display #welcome-msg {
+    margin: 50px 0;
+}
+.form__input > input {
+    appearance: none;
+    border: 0;
+    background-color: var(--cyberpunkyDisplayBackground);
+    color: var(--cyberpunkyDisplayText);
+    text-shadow: var(--cyberpunkyShadow);
+}
+.form__input > input:focus {
+    outline: none;
+    color: var(--cyberpunkyDisplayText);
+    text-shadow: var(--cyberpunkyShadow);
+}
+.form__textbox {
+    display: flex;
+    flex-direction: column;
+}
+.form__textbox > textarea {
+    appearance: none;
+    border: 0;
+    background-color: var(--cyberpunkyDisplayBackground);
+    color: var(--cyberpunkyDisplayText);
+    text-shadow: var(--cyberpunkyShadow);
+}
+.form__textbox > textarea:focus {
+    outline: none;
+    color: var(--cyberpunkyDisplayText);
+    text-shadow: var(--cyberpunkyShadow);
+}
+.form__submit {
+    opacity: 0;
 }
