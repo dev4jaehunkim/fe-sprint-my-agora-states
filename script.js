@@ -59,12 +59,13 @@ elFormQuestion.addEventListener('submit', (event) => {
   const agoraStatesDiscussion = {
     // ToDo: implement feature add id, url, answer
     id: '1',
-    createdAt: new Date(Date.now()).toISOString(),
+    createdAt: new Date().toISOString(),
     title: questionTitle,
     url: '1',
     author: userName,
     answer: null,
-    bodyHTML: questionContent
+    bodyHTML: questionContent,
+    avatarUrl: './avatar.webp'
   }
   agoraStatesDiscussions.push(agoraStatesDiscussion)
   ul.append(convertToDiscussion(agoraStatesDiscussion))
