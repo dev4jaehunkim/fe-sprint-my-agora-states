@@ -9,3 +9,16 @@ li {
 .discussion__wrapper {
     width: 540px;
 }
+
+li.discussion__container {
+    display: flex;
+}
+
+.discussion__avatar--wrapper {
+    display: flex;
+    align-items: center;
+}
+.discussion__avatar--image {
+    border-radius: 50%;
+    width: 48px;
+}
