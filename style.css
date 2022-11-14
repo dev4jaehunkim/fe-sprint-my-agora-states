@@ -1,5 +1,7 @@
 * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 li {
@@ -21,4 +23,20 @@ li.discussion__container {
 .discussion__avatar--image {
     border-radius: 50%;
     width: 48px;
+}
+
+.discussion__content {
+    margin-left: 10px;
+    width: 500px;
+    height: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.discussion__title {
+    margin-bottom: 5px;
+}
+.discussion__information {
+    display: flex;
+    justify-content: flex-end;
 }
