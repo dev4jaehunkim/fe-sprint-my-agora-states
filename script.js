@@ -1,3 +1,4 @@
+// DOM elements
 const elFormQuestion = document.querySelector('.form')
 const ul = document.querySelector("ul.discussions__container");
 const userName = document.querySelector('#name')
@@ -105,9 +106,39 @@ elFormQuestion.addEventListener('submit', (event) => {
   questionContent.value = ''
 })
 
+// implement paigination
+let numOfContent = agoraStatesDiscussions.length
+const maxContent = 10
+const maxPage = Math.floor(numOfContent / maxContent) * 10
+let pageStart = 1
+let page = 1
+const btnPagePrev = document.querySelector('#page-prev')
+const btnPageNext = document.querySelector('#page-next')
+const elPageNum = document.querySelector('#page-number')
+
+btnPagePrev.addEventListener('click', (event) => {
+  if (pageStart >= 11) {
+    pageStart -= 10
+    page--
+  }
+  render(ul)
+})
+btnPageNext.addEventListener('click', (event) => {
+  if (pageStart <= maxPage) {
+    pageStart += 10
+    page++
+  }
+  render(ul)
+})
+
+
 // agoraStatesDiscussions 배열의 모든 데이터를 화면에 렌더링하는 함수입니다.
 const render = (element) => {
-  for (let i = 0; i < agoraStatesDiscussions.length; i += 1) {
+  elPageNum.textContent = page
+  while (element.hasChildNodes()) {
+    element.removeChild(element.lastChild)
+  }
+  for (let i = pageStart-1; i < pageStart+maxContent; i++) {
     element.append(convertToDiscussion(agoraStatesDiscussions[i]));
   }
   return;

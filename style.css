@@ -133,3 +133,17 @@ li.discussion__container {
 .form__submit {
     opacity: 0;
 }
+
+/* pagination button style */
+.page-wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+.page-wrapper button {
+    width: 25px;
+    height: 25px;
+}
+.page-wrapper span {
+    color: var(--cyberpunkyDisplayText);
+    text-shadow: var(--cyberpunkyShadow);
+}
