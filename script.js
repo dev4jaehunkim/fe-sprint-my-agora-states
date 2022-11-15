@@ -67,8 +67,8 @@ elFormQuestion.addEventListener('submit', (event) => {
     bodyHTML: questionContent,
     avatarUrl: './avatar.webp'
   }
-  agoraStatesDiscussions.push(agoraStatesDiscussion)
-  ul.append(convertToDiscussion(agoraStatesDiscussion))
+  agoraStatesDiscussions.unshift(agoraStatesDiscussion)
+  ul.prepend(convertToDiscussion(agoraStatesDiscussion))
 })
 
 // agoraStatesDiscussions 배열의 모든 데이터를 화면에 렌더링하는 함수입니다.
