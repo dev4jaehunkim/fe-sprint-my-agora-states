@@ -3,13 +3,9 @@ console.log(agoraStatesDiscussions);
 
 const elFormQuestion = document.querySelector('.form')
 const ul = document.querySelector("ul.discussions__container");
-
-const addDiscussion = (target) => {
-  console.log(target)
-  
-
-  return agoraStatesDiscussion
-}
+const userName = document.querySelector('#name')
+const questionTitle = document.querySelector('#title')
+const questionContent = document.querySelector('#story')
 
 // 시간 형식 변경
 const convertDate = (dateStr) => {
@@ -80,23 +76,23 @@ const convertToDiscussion = (obj) => {
 elFormQuestion.addEventListener('submit', (event) => {
   // block refresh
   event.preventDefault()
-  console.log(event)
-  const userName = event.target[0].value
-  const questionTitle = event.target[1].value
-  const questionContent = event.target[2].value
+  
   const agoraStatesDiscussion = {
     // ToDo: implement feature add id, url, answer
     id: '1',
     createdAt: new Date().toISOString(),
-    title: questionTitle,
+    title: questionTitle.value,
     url: '1',
-    author: userName,
+    author: userName.value,
     answer: null,
-    bodyHTML: questionContent,
+    bodyHTML: questionContent.value,
     avatarUrl: './avatar.webp'
   }
   agoraStatesDiscussions.unshift(agoraStatesDiscussion)
   ul.prepend(convertToDiscussion(agoraStatesDiscussion))
+  userName.value = ''
+  questionTitle.value = ''
+  questionContent.value = ''
 })
 
 // agoraStatesDiscussions 배열의 모든 데이터를 화면에 렌더링하는 함수입니다.
