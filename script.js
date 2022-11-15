@@ -10,6 +10,33 @@ const addDiscussion = (target) => {
 
   return agoraStatesDiscussion
 }
+
+// 시간 형식 변경
+const convertDate = (dateStr) => {
+  // 날짜 형식 옵션
+  // const options = {year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', dayPeriod: 'long', minute: 'numeric', second: 'numeric'}
+  // dateStr = new Intl.DateTimeFormat('ko-kr', options).format(new Date(dateStr))
+  dateStr = new Date(dateStr)
+
+  const year = dateStr.getFullYear()
+  const month = String(dateStr.getMonth()).padStart(2, '0')
+  const day = String(dateStr.getDay()).padStart(2, '0')
+  const getDayPeriod = (hour) => {
+    if (hour > 12) {
+      hour = `오후 ${String(hour - 12).padStart(2, '0')}`
+    }
+    else {
+      hour = `오전 ${String(hour).padStart(2, '0')}`
+    }
+
+    return hour
+  }
+  const hour = getDayPeriod(dateStr.getHours())
+  const minute = String(dateStr.getMinutes()).padStart(2, '0')
+  const second = String(dateStr.getSeconds()).padStart(2, '0')
+  
+  return `${year}-${month}-${day} ${hour}:${minute}:${second}`
+}
 // convertToDiscussion은 아고라 스테이츠 데이터를 DOM으로 바꿔줍니다.
 const convertToDiscussion = (obj) => {
   const li = document.createElement("li"); // li 요소 생성
@@ -34,7 +61,8 @@ const convertToDiscussion = (obj) => {
   discussionTitle.append(discussionTitleLink)
   const discussionInfo = document.createElement('div')
   discussionInfo.className = 'discussion__information'
-  discussionInfo.textContent = `${obj.author} / ${obj.createdAt}`
+  const createdAt = convertDate(obj.createdAt)
+  discussionInfo.textContent = `${obj.author} / ${createdAt}`
   discussionContent.append(discussionTitle, discussionInfo)
   
   // 답변여부 영역
