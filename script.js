@@ -109,35 +109,27 @@ elFormQuestion.addEventListener('submit', (event) => {
 // implement paigination
 let numOfContent = agoraStatesDiscussions.length
 const maxContent = 10
-const maxPage = Math.floor(numOfContent / maxContent) * 10
+const maxPage = Math.ceil(numOfContent / maxContent)
 let pageStart = 1
 let page = 1
-const btnPagePrev = document.querySelector('#page-prev')
-const btnPageNext = document.querySelector('#page-next')
-const elPageNum = document.querySelector('#page-number')
-
-btnPagePrev.addEventListener('click', (event) => {
-  if (pageStart >= 11) {
-    pageStart -= 10
-    page--
-  }
-  render(ul)
-})
-btnPageNext.addEventListener('click', (event) => {
-  if (pageStart <= maxPage) {
-    pageStart += 10
-    page++
-  }
-  render(ul)
-})
+const elPageWrapper = document.querySelector('.page-wrapper')
 
 
 // agoraStatesDiscussions 배열의 모든 데이터를 화면에 렌더링하는 함수입니다.
 const render = (element) => {
-  elPageNum.textContent = page
+  if (!(elPageWrapper.hasChildNodes())) {
+    for (let i=1; i<=maxPage; i++) {
+      const elPageNum = document.createElement('span')
+      elPageNum.textContent = i  
+      elPageWrapper.append(elPageNum)
+    }
+  }
+    
+  
   while (element.hasChildNodes()) {
     element.removeChild(element.lastChild)
   }
+
   for (let i = pageStart-1; i < pageStart+maxContent; i++) {
     element.append(convertToDiscussion(agoraStatesDiscussions[i]));
   }
@@ -146,3 +138,13 @@ const render = (element) => {
 
 // ul 요소에 agoraStatesDiscussions 배열의 모든 데이터를 화면에 렌더링합니다.
 render(ul);
+
+// 아래 span 요소들은 페이지 최초 렌더링 이후에 생성되기 때문에 render() 밑에 넣어줘야 함
+const elPageNumbers = elPageWrapper.querySelectorAll('span')
+elPageNumbers.forEach((elPage) => {
+  elPage.addEventListener('click', (event) => {
+    const pageNum = event.target.textContent
+    page = pageNum
+    render(ul)
+  })
+})

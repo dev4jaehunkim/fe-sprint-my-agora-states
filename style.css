@@ -134,16 +134,15 @@ li.discussion__container {
     opacity: 0;
 }
 
-/* pagination button style */
+/* pagination style */
 .page-wrapper {
     display: flex;
     justify-content: space-between;
 }
-.page-wrapper button {
-    width: 25px;
-    height: 25px;
-}
 .page-wrapper span {
     color: var(--cyberpunkyDisplayText);
     text-shadow: var(--cyberpunkyShadow);
+}
+.selected-page {
+    font-size: 1.5rem;
 }
